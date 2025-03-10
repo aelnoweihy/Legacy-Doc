@@ -508,11 +508,107 @@ Status Code: 201 - Created
 **URI Parameter:**
 **Output:**
 ## userinvoices/{userID}
-**Verb:**
-**Purpose:**
-**DB Mapping:**
-**URI Parameter:**
-**Output:**
+**Verb:** GET
+**Purpose:** Gets a list of all invoices from created sales orders
+**DB Mapping:** UserInvoices & userinvoices_lastday
+**URI Parameter:** a string for distrid (ex: 00000001)
+**Output:** 
+```
+[
+
+    {
+
+        "DOC_ID": "100007000016",
+
+        "FLAG_TYPE": "CR",
+
+        "DISTR": "00000001",
+
+        "DISTR_NAME": "ماى واي",
+
+        "COUNTER": "0003",
+
+        "ITEM_ID": "90",
+
+        "ITEM_NAME": "مصاريف شحن",
+
+        "PRICE": 23.0,
+
+        "QTY": 1.0,
+
+        "NET_TOTAL": 23.0,
+
+        "ITEM_BP": 0.0,
+
+        "TOTAL_BP": 0.0,
+
+        "DOC_DATE": "2025-02-25",
+
+        "DS_SHIPMENT": "100007000006",
+
+        "SHIPMENT_STATUS": "0",
+
+        "DLV_DATE": "0000-00-00",
+
+        "COMP_NAME": "ماى واى",
+
+        "REF_NO": "",
+
+        "STORE_ID": "01",
+
+        "ADELIVERY": "25022320064184-04/01",
+
+        "REF_NO_87": "25022320064184"
+
+    },
+
+    {
+
+        "DOC_ID": "100007000016",
+
+        "FLAG_TYPE": "CR",
+
+        "DISTR": "00000001",
+
+        "DISTR_NAME": "ماى واي",
+
+        "COUNTER": "0004",
+
+        "ITEM_ID": "91",
+
+        "ITEM_NAME": "مصاريف إدارية",
+
+        "PRICE": 6.0,
+
+        "QTY": 1.0,
+
+        "NET_TOTAL": 6.0,
+
+        "ITEM_BP": 0.0,
+
+        "TOTAL_BP": 0.0,
+
+        "DOC_DATE": "2025-02-25",
+
+        "DS_SHIPMENT": "100007000006",
+
+        "SHIPMENT_STATUS": "0",
+
+        "DLV_DATE": "0000-00-00",
+
+        "COMP_NAME": "ماى واى",
+
+        "REF_NO": "",
+
+        "STORE_ID": "01",
+
+        "ADELIVERY": "25022320064184-04/01",
+
+        "REF_NO_87": "25022320064184"
+
+    }
+ ]
+```
 ## getPendingPoints/{distr_id}
 **Verb:**
 **Purpose:**
