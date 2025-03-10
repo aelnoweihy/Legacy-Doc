@@ -509,10 +509,15 @@ Status Code: 201 - Created
 **Output:**
 ## userinvoices/{userID}
 **Verb:** GET
+
 **Purpose:** Gets a list of all invoices from created sales orders
+
 **DB Mapping:** UserInvoices & userinvoices_lastday
+
 **URI Parameter:** a string for distrid (ex: 00000001)
+
 **Output:** 
+
 ```
 [
 
