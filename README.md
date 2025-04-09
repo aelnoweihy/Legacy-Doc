@@ -14,64 +14,66 @@ This document serves to document all APIs running for the production environment
 - Microsoft SQL Server
 # Endpoint Table
 
-| Method Verb | Endpoint                                                                                      | Dev | Prod | MobApp                                                                                                        |
-| ----------- | --------------------------------------------------------------------------------------------- | --- | ---- | ------------------------------------------------------------------------------------------------------------- |
-| GET         | [[#areas]]                                                                                    | Y   | Y    | Y                                                                                                             |
-| GET         | [[#areaid/{id}]]                                                                              | Y   | Y    | Y                                                                                                             |
-| GET         | [[#distrsummary/{id}]]                                                                        | Y   | Y    | Y                                                                                                             |
-| POST        | [[#editvou/{doc_id}/{distr_id}/{store_id}/{so_type}]]                                         | Y   | Y    |                                                                                                               |
-| GET         | [[#datetimenow]]                                                                              | Y   | Y    | Y                                                                                                             |
-| PUT         | [[#invoice]]                                                                                  | Y   | Y    |                                                                                                               |
-| PUT         | [[#soBulk]]                                                                                   | Y   | Y    |                                                                                                               |
-| POST        | [[#updatedelap/{doc_id}/{distr_id}/{store_id}/{so_type}]]                                     | Y   | Y    |                                                                                                               |
-| GET         | [[#admin-fee-status/{distr_id}]]                                                              | Y   | Y    |                                                                                                               |
-| POST        | [[#updatedoneinv/{doc_id}/{distr_id}/{store_id}/{doc_type}]]                                  | Y   | Y    |                                                                                                               |
-| GET         | [[#getBackOrderItemsNew/{distr_id}/{store_id}]]                                               | Y   | Y    |                                                                                                               |
-| GET         | [[#leaderverification/{leaderID}/{distrID}]]                                                  | Y   | Y    | Y                                                                                                             |
-| GET         | [[#memberid/{id}]]                                                                            | Y   | Y    | Y                                                                                                             |
-| GET         | [[#member_fees_verification/{distr_id}/{service_center}]]                                     | Y   | Y    | Y                                                                                                             |
-| GET         | [[#deserve_bonus/{distr_id}]]                                                                 | Y   | Y    | Y                                                                                                             |
-| PUT         | [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] | Y   | Y    |                                                                                                               |
-| GET         | [[#heldItemReport/{distrID}]]                                                                 | Y   | Y    |                                                                                                               |
-| GET         | [[#newmembers/{distrID}]]                                                                     | Y   | Y    | Y                                                                                                             |
-| GET         | [[#distrratio/{distrID}]]                                                                     | Y   | Y    | Y                                                                                                             |
-| GET         | [[#shipmentcompanies]]                                                                        | Y   | Y    | Not sure if used                                                                                              |
-| GET         | [[#get_all_shipment_places]]                                                                  | Y   | Y    | Y                                                                                                             |
-| GET         | [[#get_shipment_places_by_area_id/{areaID}]]                                                  | Y   | Y    | Y                                                                                                             |
-| GET         | [[#get_shipment_places_by_distr_id/{distrID}]]                                                | Y   | Y    | Y                                                                                                             |
-| PUT         | [[#add_new_distr_shipment_place/{store_id}]]                                                  | Y   | Y    | Y                                                                                                             |
-| DELETE      | [[#delete_distr_shipment_place_record/{id}]]                                                  | Y   | Y    | Unused                                                                                                        |
-| GET         | [[#stock/{item_id}/{store_id}]]                                                               | Y   | Y    | Y                                                                                                             |
-| GET         | [[#getinvoicedetails/{doc_id}]]                                                               | Y   | Y    | Y                                                                                                             |
-| GET         | [[#getlateinvoices/{distr_id}]]                                                               | Y   | Y    | Y                                                                                                             |
-| GET         | [[#missingordamageditems/{distr_id}]]                                                         | Y   | Y    | Y                                                                                                             |
-| GET         | [[#userpending/{userID}]]                                                                     | Y   | Y    | Y                                                                                                             |
-| GET         | [[#userinvoices/{userID}]]                                                                    | Y   | Y    | Y                                                                                                             |
-| GET         | [[#getPendingPoints/{distr_id}]]                                                              | Y   | Y    |                                                                                                               |
-| GET         | [[#getPersonalPoints/{distr_id}]]                                                             | Y   | Y    |                                                                                                               |
-| GET         | [[#api/invoices/{id}]]                                                                        | Y   | Y    |                                                                                                               |
-| GET         | itemdetails                                                                                   | N   | N    | Removed                                                                                                       |
-| GET         | allitemdetails                                                                                | N   | N    | Removed                                                                                                       |
-| GET         | newproducts                                                                                   | N   | N    | Removed                                                                                                       |
-| GET         | getBackOrderItems                                                                             | Y   | Y    | Depricated, use [[#getBackOrderItemsNew/{distr_id}/{store_id}]]                                               |
-| GET         | [[#distrrepsummary/{distrID}]]                                                                | Y   | Y    |                                                                                                               |
-| GET         | [[#allmembers]]                                                                               | Y   | Y    | Unused (takes ages)                                                                                           |
-| GET         | [[#pending/{id}]]                                                                             | Y   | Y    | Y                                                                                                             |
-| GET         | [[#getshipment]]                                                                              | Y   | Y    | not sure if used                                                                                              |
-| GET         | [[#getshipmentbyplaceid/{dsShipment}]]                                                        | Y   | Y    | not sure if used                                                                                              |
-| GET         | [[#getshipmentbyaname/{aname}]]                                                               | Y   | Y    | not sure if used                                                                                              |
-| GET         | [[#get_shiplent_places_by_record_id/{id}]]                                                    | Y   | Y    | not sure if used                                                                                              |
-| GET         | [[#report_details/{id}]]                                                                      | Y   | Y    | not sure if used                                                                                              |
-| GET         | [[#pendingmember/{userID}]]                                                                   | Y   | Y    | not sure if used                                                                                              |
-| GET         | [[#memberpromo/{distr_id}]]                                                                   | Y   | Y    | not sure if used                                                                                              |
-| GET         | cashBackOrder                                                                                 | N   | N    | doesn't exist                                                                                                 |
-| GET         | [[#get-cash-backorder/{distr_id}/{store_id}]]                                                 | Y   | Y    | not sure if used                                                                                              |
-| PUT         | insert_batch_sales_orders                                                                     | Y   | Y    | Depricated, use [[#soBulk]]                                                                                   |
-| PUT         | memregister_no_so                                                                             | Y   | Y    | Depricated, use [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] |
-| PUT         | memregister_ds                                                                                | Y   | Y    | Depricated, use [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] |
-| PUT         | memregister_ds_8k                                                                             | Y   | Y    | Depricated, use [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] |
-| PUT         | memregister                                                                                   | Y   | Y    | Depricated, use [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] |
-| Mix         | SPOT & GUEST METHODS                                                                          | Y   | Y    | Pending review                                                                                                |
+| Method Verb | Endpoint                                                                                          | Dev | Prod | MobApp                                                                                                        |
+| ----------- | ------------------------------------------------------------------------------------------------- | --- | ---- | ------------------------------------------------------------------------------------------------------------- |
+| GET         | [[#areas]]                                                                                        | Y   | Y    | Y                                                                                                             |
+| GET         | [[#areaid/{id}]]                                                                                  | Y   | Y    | Y                                                                                                             |
+| GET         | [[#distrsummary/{id}]]                                                                            | Y   | Y    | Y                                                                                                             |
+| POST        | [[#editvou/{doc_id}/{distr_id}/{store_id}/{so_type}]]                                             | Y   | Y    |                                                                                                               |
+| GET         | [[#datetimenow]]                                                                                  | Y   | Y    | Y                                                                                                             |
+| PUT         | [[#invoice]]                                                                                      | Y   | Y    |                                                                                                               |
+| PUT         | [[#soBulk]]                                                                                       | Y   | Y    |                                                                                                               |
+| POST        | [[#updatedelap/{doc_id}/{distr_id}/{store_id}/{so_type}]]                                         | Y   | Y    |                                                                                                               |
+| GET         | [[#admin-fee-status/{distr_id}]]                                                                  | Y   | Y    |                                                                                                               |
+| POST        | [[#updatedoneinv/{doc_id}/{distr_id}/{store_id}/{doc_type}]]                                      | Y   | Y    |                                                                                                               |
+| GET         | [[#getBackOrderItemsNew/{distr_id}/{store_id}]]                                                   | Y   | Y    |                                                                                                               |
+| GET         | [[#leaderverification/{leaderID}/{distrID}]]                                                      | Y   | Y    | Y                                                                                                             |
+| GET         | [[#memberid/{id}]]                                                                                | Y   | Y    | Y                                                                                                             |
+| GET         | [[#member_fees_verification/{distr_id}/{service_center}]]                                         | Y   | Y    | Y                                                                                                             |
+| GET         | [[#deserve_bonus/{distr_id}]]                                                                     | Y   | Y    | Y                                                                                                             |
+| PUT         | [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]]     | Y   | Y    |                                                                                                               |
+| GET         | [[#heldItemReport/{distrID}]]                                                                     | Y   | Y    |                                                                                                               |
+| GET         | [[#newmembers/{distrID}]]                                                                         | Y   | Y    | Y                                                                                                             |
+| GET         | [[#distrratio/{distrID}]]                                                                         | Y   | Y    | Y                                                                                                             |
+| GET         | [[#shipmentcompanies]]                                                                            | Y   | Y    | Not sure if used                                                                                              |
+| GET         | [[#get_all_shipment_places]]                                                                      | Y   | Y    | Y                                                                                                             |
+| GET         | [[#get_shipment_places_by_area_id/{areaID}]]                                                      | Y   | Y    | Y                                                                                                             |
+| GET         | [[#get_shipment_places_by_distr_id/{distrID}]]                                                    | Y   | Y    | Y                                                                                                             |
+| PUT         | [[#add_new_distr_shipment_place/{store_id}]]                                                      | Y   | Y    | Y                                                                                                             |
+| DELETE      | [[#delete_distr_shipment_place_record/{id}]]                                                      | Y   | Y    | Unused                                                                                                        |
+| GET         | [[#stock/{item_id}/{store_id}]]                                                                   | Y   | Y    | Y                                                                                                             |
+| GET         | [[#getinvoicedetails/{doc_id}]]                                                                   | Y   | Y    | Y                                                                                                             |
+| GET         | [[#getlateinvoices/{distr_id}]]                                                                   | Y   | Y    | Y                                                                                                             |
+| GET         | [[#missingordamageditems/{distr_id}]]                                                             | Y   | Y    | Y                                                                                                             |
+| GET         | [[#userpending/{userID}]]                                                                         | Y   | Y    | Y                                                                                                             |
+| GET         | [[#userinvoices/{userID}]]                                                                        | Y   | Y    | Y                                                                                                             |
+| GET         | [[#getPendingPoints/{distr_id}]]                                                                  | Y   | Y    |                                                                                                               |
+| GET         | [[#getPersonalPoints/{distr_id}]]                                                                 | Y   | Y    |                                                                                                               |
+| GET         | [[#api/invoices/{id}]]                                                                            | Y   | Y    |                                                                                                               |
+| GET         | itemdetails                                                                                       | N   | N    | Removed                                                                                                       |
+| GET         | allitemdetails                                                                                    | N   | N    | Removed                                                                                                       |
+| GET         | newproducts                                                                                       | N   | N    | Removed                                                                                                       |
+| GET         | getBackOrderItems                                                                                 | Y   | Y    | Depricated, use [[#getBackOrderItemsNew/{distr_id}/{store_id}]]                                               |
+| GET         | [[#distrrepsummary/{distrID}]]                                                                    | Y   | Y    |                                                                                                               |
+| GET         | [[#allmembers]]                                                                                   | Y   | Y    | Unused (takes ages)                                                                                           |
+| GET         | [[#pending/{id}]]                                                                                 | Y   | Y    | Y                                                                                                             |
+| GET         | [[#getshipment]]                                                                                  | Y   | Y    | not sure if used                                                                                              |
+| GET         | [[#getshipmentbyplaceid/{dsShipment}]]                                                            | Y   | Y    | not sure if used                                                                                              |
+| GET         | [[#getshipmentbyaname/{aname}]]                                                                   | Y   | Y    | not sure if used                                                                                              |
+| GET         | [[#get_shiplent_places_by_record_id/{id}]]                                                        | Y   | Y    | not sure if used                                                                                              |
+| GET         | [[#report_details/{id}]]                                                                          | Y   | Y    | not sure if used                                                                                              |
+| GET         | [[#pendingmember/{userID}]]                                                                       | Y   | Y    | not sure if used                                                                                              |
+| GET         | [[#memberpromo/{distr_id}]]                                                                       | Y   | Y    | not sure if used                                                                                              |
+| GET         | cashBackOrder                                                                                     | N   | N    | doesn't exist                                                                                                 |
+| GET         | [[#get-cash-backorder/{distr_id}/{store_id}]]                                                     | Y   | Y    | not sure if used                                                                                              |
+| PUT         | insert_batch_sales_orders                                                                         | Y   | Y    | Depricated, use [[#soBulk]]                                                                                   |
+| PUT         | memregister_no_so                                                                                 | Y   | Y    | Depricated, use [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] |
+| PUT         | memregister_ds                                                                                    | Y   | Y    | Depricated, use [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] |
+| PUT         | memregister_ds_8k                                                                                 | Y   | Y    | Depricated, use [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] |
+| PUT         | memregister                                                                                       | Y   | Y    | Depricated, use [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] |
+| Mix         | SPOT & GUEST METHODS                                                                              | Y   | Y    | Pending review                                                                                                |
+| PUT         | [[#api/memregister-v3/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]] | Y   | Y    | Same params as [[#memregister-v2/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}]]  |
+|             |                                                                                                   |     |      |                                                                                                               |
 # Endpoints
 ## areas
 **Verb:** GET
@@ -283,6 +285,7 @@ Status Code: 201 - Created
 | ---- | ------------------------------------------------------------------------- |
 | 201  | Returns a list of sales order DOC_ID<br>[<br>    "9900031039365"<br>]<br> |
 | 500  | An error occured while processing the transaction.                        |
+
 **Note:** AP table ADELIVERY will contain the string a string to mark the bulk sales order as a fraction of total sales orders within the single call IE (6/1, 6/2..6/6)
 ## updatedelap/{doc_id}/{distr_id}/{store_id}/{so_type}
 **Verb:** POST
@@ -509,15 +512,10 @@ Status Code: 201 - Created
 **Output:**
 ## userinvoices/{userID}
 **Verb:** GET
-
 **Purpose:** Gets a list of all invoices from created sales orders
-
 **DB Mapping:** UserInvoices & userinvoices_lastday
-
 **URI Parameter:** a string for distrid (ex: 00000001)
-
 **Output:** 
-
 ```
 [
 
@@ -638,3 +636,21 @@ Status Code: 201 - Created
 **DB Mapping:**
 **URI Parameter:**
 **Output:**
+
+## api/memregister-v3/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}
+
+**Verb**: Put
+
+**Purpose**: Creates a new AZ1 record with corresponding AP, AQ, A9, and AA. AZ1 has an email property field
+
+**URI Parameter:** leaderId, ds_shipment_place, areaId_8k, spname, inv_type, store_id
+
+**Request Body:**    
+
+**Output:** 
+
+
+| Code | Message                                                                                                                                                                                                                                                                     |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201  | Created {id: newDistrId}<br>                                                                                                                                                                                                                                                |
+| 409  | Conflict with the following messages:<br>- if ds_shipment_place is null or empty:<br>{<br>  errMsg = برجاء ادخال منطقة شحن<br>}<br>- if duplicate distr_ident:<br>{<br>  errMsg = الرقم القومي مكرر<br>}<br>- if duplicate phone:<br>{<br>  errMsg = رقم التيلفون مكرر<br>} |
