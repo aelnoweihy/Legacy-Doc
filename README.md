@@ -183,10 +183,15 @@ This document serves to document all APIs running for the production environment
     ],
     "ap3": [
         {
-            "DISTR_ID": "10191974"
+            "DISTR_ID": "10191974",
+
+            "S_SERIAL" : "BONUS VALUE IN STRING"
         },
         {
-            "DISTR_ID": "10000124"
+            "DISTR_ID": "10000124",
+
+            "S_SERIAL" : "BONUS VALUE IN STRING"
+
         }
     ]
 }
@@ -267,13 +272,18 @@ Status Code: 201 - Created
                 }
             ],
             "ap3": [
-                {
-                    "DISTR_ID": "10191974"
-                },
-                {
-                    "DISTR_ID": "10000124"
-                }
-            ]
+	        {
+	            "DISTR_ID": "10191974",
+	
+	            "S_SERIAL" : "BONUS VALUE IN STRING"
+	        },
+	        {
+	            "DISTR_ID": "10000124",
+	
+	            "S_SERIAL" : "BONUS VALUE IN STRING"
+	
+	        }
+	    ]
         }
     ],
     "storeId":"01"
