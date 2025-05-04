@@ -233,7 +233,8 @@ Status Code: 201 - Created
                 "DS_SHIPMENT_PLACE": "01",
                 "AREMARKS": "Test salesorder",
                 "SHIPMTHD_A": "{for bonus}",
-                "SHIPMTHD_L": "{for backorder}"
+                "SHIPMTHD_L": "{for backorder}",
+		"CUST_ID" : "00000001"
             },
             "aadetail": [
                 {
