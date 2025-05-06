@@ -532,47 +532,47 @@ Status Code: 201 - Created
 
     {
 
-        "DOC_ID": "100007000016",
+        "DOC_ID": "100007000016", --string
 
-        "FLAG_TYPE": "CR",
+        "FLAG_TYPE": "CR", --str
 
-        "DISTR": "00000001",
+        "DISTR": "00000001", --str
 
-        "DISTR_NAME": "ماى واي",
+        "DISTR_NAME": "ماى واي", --str
 
-        "COUNTER": "0003",
+        "COUNTER": "0003", --str
 
-        "ITEM_ID": "90",
+        "ITEM_ID": "90", --str
 
-        "ITEM_NAME": "مصاريف شحن",
+        "ITEM_NAME": "مصاريف شحن", --str
 
-        "PRICE": 23.0,
+        "PRICE": 23.0,-- decimal
 
-        "QTY": 1.0,
+        "QTY": 1.0, --int 
 
-        "NET_TOTAL": 23.0,
+        "NET_TOTAL": 23.0, --decimal
 
-        "ITEM_BP": 0.0,
+        "ITEM_BP": 0.0, --int
 
-        "TOTAL_BP": 0.0,
+        "TOTAL_BP": 0.0, --int
 
-        "DOC_DATE": "2025-02-25",
+        "DOC_DATE": "2025-02-25",--string
 
-        "DS_SHIPMENT": "100007000006",
+        "DS_SHIPMENT": "100007000006",--str
 
-        "SHIPMENT_STATUS": "0",
+        "SHIPMENT_STATUS": "0", --str
 
-        "DLV_DATE": "0000-00-00",
+        "DLV_DATE": "0000-00-00",--str
 
-        "COMP_NAME": "ماى واى",
+        "COMP_NAME": "ماى واى",--str
 
-        "REF_NO": "",
+        "REF_NO": "",--str
 
-        "STORE_ID": "01",
+        "STORE_ID": "01",--str
 
-        "ADELIVERY": "25022320064184-04/01",
+        "ADELIVERY": "25022320064184-04/01",--str
 
-        "REF_NO_87": "25022320064184"
+        "REF_NO_87": "25022320064184"--str
 
     },
 
