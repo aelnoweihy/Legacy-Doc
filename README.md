@@ -522,9 +522,16 @@ Status Code: 201 - Created
 **URI Parameter:**
 **Output:**
 ## userinvoices/{userID}
+
+## userinvoices-v2/{userId}
 **Verb:** GET
+
 **Purpose:** Gets a list of all invoices from created sales orders
-**DB Mapping:** UserInvoices & userinvoices_lastday
+
+**DB Mapping:** UserInvoices & userinvoices_lastday. v2 maps to USERINVOICES_SUMMARY table
+
+**NOTE:** V2 only works on dev env. and that's the one that has the datatypes annotated below, since we're changing structure entirely, new version should read from userinvoices-v2.
+
 **URI Parameter:** a string for distrid (ex: 00000001)
 **Output:** 
 ```
