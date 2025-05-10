@@ -521,9 +521,53 @@ Status Code: 201 - Created
 **DB Mapping:**
 **URI Parameter:**
 **Output:**
+```
+[
+    {
+        "DOC_ID": "9900031134233",
+        "SO_INV_TYPE": "CR",
+        "DISTR_ID": "00000001",
+        "DISTRNAME": "ماى واي",
+        "COUNTER": "0001",
+        "ITEM_ID": "4227",
+        "ITEMNAME": "كريم سبرينج تفتيح و ترطيب للأيدى شديدة الجفاف بالزبادى",
+        "QTY_REQ": 1.000,
+        "UNIT_PRICE": 23100.000,
+        "TOT_PRICE": 23100.000,
+        "ITEM_BP": 8.0,
+        "TOTAL_BP": 8.0,
+        "DOC_DATE": "2025-05-10",
+        "ADD_TIME": "15:19:16",
+        "AREMARKS": "Test salesorder",
+        "STORE_ID": "01",
+        "ADELIVERY": "1/1",
+        "CUST_ID": "0"
+    },
+    {
+        "DOC_ID": "9900031134233",
+        "SO_INV_TYPE": "CR",
+        "DISTR_ID": "00000001",
+        "DISTRNAME": "ماى واي",
+        "COUNTER": "0002",
+        "ITEM_ID": "90",
+        "ITEMNAME": "مصاريف شحن",
+        "QTY_REQ": 1.000,
+        "UNIT_PRICE": 23100.000,
+        "TOT_PRICE": 23100.000,
+        "ITEM_BP": 8.0,
+        "TOTAL_BP": 8.0,
+        "DOC_DATE": "2025-05-10",
+        "ADD_TIME": "15:19:16",
+        "AREMARKS": "Test salesorder",
+        "STORE_ID": "01",
+        "ADELIVERY": "1/1",
+        "CUST_ID": "0"
+    }
+]
+```
 ## userinvoices/{userID}
 
-## userinvoices-v2/{userId}
+### userinvoices-v2/{userId}
 **Verb:** GET
 
 **Purpose:** Gets a list of all invoices from created sales orders
@@ -532,6 +576,8 @@ Status Code: 201 - Created
 
 **NOTE:** V2 only works on dev env. and that's the one that has the datatypes annotated below, since we're changing structure entirely, new version should read from userinvoices-v2.
 
+**NOTE:** Userinvoices is updated on both production and development to display CUST_ID. 
+
 **URI Parameter:** a string for distrid (ex: 00000001)
 **Output:** 
 ```
@@ -539,47 +585,49 @@ Status Code: 201 - Created
 
     {
 
-        "DOC_ID": "100007000016", --string
+        "DOC_ID": "100007000016", 
 
-        "FLAG_TYPE": "CR", --str
+        "FLAG_TYPE": "CR", 
 
-        "DISTR": "00000001", --str
+        "DISTR": "00000001", 
 
-        "DISTR_NAME": "ماى واي", --str
+        "DISTR_NAME": "ماى واي", 
 
-        "COUNTER": "0003", --str
+        "COUNTER": "0003", 
 
-        "ITEM_ID": "90", --str
+        "ITEM_ID": "90", 
 
-        "ITEM_NAME": "مصاريف شحن", --str
+        "ITEM_NAME": "مصاريف شحن", 
 
-        "PRICE": 23.0,-- decimal
+        "PRICE": 23.0,
 
-        "QTY": 1.0, --int 
+        "QTY": 1.0, 
 
-        "NET_TOTAL": 23.0, --decimal
+        "NET_TOTAL": 23.0, 
 
-        "ITEM_BP": 0.0, --int
+        "ITEM_BP": 0.0, 
 
-        "TOTAL_BP": 0.0, --int
+        "TOTAL_BP": 0.0, 
 
-        "DOC_DATE": "2025-02-25",--string
+        "DOC_DATE": "2025-02-25,
 
-        "DS_SHIPMENT": "100007000006",--str
+        "DS_SHIPMENT": "100007000006",
 
-        "SHIPMENT_STATUS": "0", --str
+        "SHIPMENT_STATUS": "0",
 
-        "DLV_DATE": "0000-00-00",--str
+        "DLV_DATE": "0000-00-00",
 
-        "COMP_NAME": "ماى واى",--str
+        "COMP_NAME": "ماى واى",
 
-        "REF_NO": "",--str
+        "REF_NO": "",-
 
-        "STORE_ID": "01",--str
+        "STORE_ID": "01",
 
-        "ADELIVERY": "25022320064184-04/01",--str
+        "ADELIVERY": "25022320064184-04/01",
 
-        "REF_NO_87": "25022320064184"--str
+        "REF_NO_87": "25022320064184",
+
+	"CUST_ID":"00000001" 
 
     },
 
@@ -625,7 +673,9 @@ Status Code: 201 - Created
 
         "ADELIVERY": "25022320064184-04/01",
 
-        "REF_NO_87": "25022320064184"
+        "REF_NO_87": "25022320064184",
+
+	"CUST_ID":"00000001" 
 
     }
  ]
