@@ -576,10 +576,13 @@ Status Code: 201 - Created
 
 **NOTE:** V2 only works on dev env. and that's the one that has the datatypes annotated below, since we're changing structure entirely, new version should read from userinvoices-v2.
 
-**NOTE:** Userinvoices is updated on both production and development to display CUST_ID. 
+**NOTE:** ~~Userinvoices is updated on both production and development to display CUST_ID.~~ 
+
+- api/userinvoices does not work on development, only on production. It will be depricated upon forcing new app version
+- api/userinvoices-v2 works on development only (will be moved to production)
 
 **URI Parameter:** a string for distrid (ex: 00000001)
-**Output:** 
+**Output userinvoices:** 
 ```
 [
 
@@ -680,6 +683,59 @@ Status Code: 201 - Created
     }
  ]
 ```
+
+**Output userinvoices-v2:**
+```
+[
+    {
+        "DOC_ID": "100007000069",
+        "FLAG_TYPE": "CR",
+        "DISTR": "00000001",
+        "DISTR_NAME": "ماى واي",
+        "COUNTER": "0001",
+        "ITEM_ID": "1294",
+        "ITEM_NAME": "شاور جل جامبو عنبر 2000 مل",
+        "PRICE": 117.75,
+        "QTY": 1.0,
+        "NET_TOTAL": 117.75,
+        "ITEM_BP": 29.0,
+        "TOTAL_BP": 29.0,
+        "DOC_DATE": "2025-05-14",
+        "DS_SHIPMENT": "100007000080",
+        "SHIPMENT_STATUS": "0",
+        "DLV_DATE": "0000-00-00",
+        "COMP_NAME": "ماى  واى",
+        "STORE_ID": "01",
+        "ADELIVERY": "25051513053793-01/01",
+        "REF_NO": "25051513053793",
+        "CUST_ID": "00000001"
+    },
+    {
+        "DOC_ID": "100007000069",
+        "FLAG_TYPE": "CR",
+        "DISTR": "00000001",
+        "DISTR_NAME": "ماى واي",
+        "COUNTER": "0002",
+        "ITEM_ID": "90",
+        "ITEM_NAME": "مصاريف شحن",
+        "PRICE": 23.0,
+        "QTY": 1.0,
+        "NET_TOTAL": 23.0,
+        "ITEM_BP": 0.0,
+        "TOTAL_BP": 0.0,
+        "DOC_DATE": "2025-05-14",
+        "DS_SHIPMENT": "100007000080",
+        "SHIPMENT_STATUS": "0",
+        "DLV_DATE": "0000-00-00",
+        "COMP_NAME": "ماى  واى",
+        "STORE_ID": "01",
+        "ADELIVERY": "25051513053793-01/01",
+        "REF_NO": "25051513053793",
+        "CUST_ID": "00000001"
+    }
+]
+```
+
 ## getPendingPoints/{distr_id}
 **Verb:**
 **Purpose:**
