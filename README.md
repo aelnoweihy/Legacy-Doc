@@ -112,10 +112,21 @@ This document serves to document all APIs running for the production environment
 | 404         | not found - no special message                                                                                                                                                                             |
 
 ## editvou/{doc_id}/{distr_id}/{store_id}/{so_type}
+### editvou-bulk/{doc_id}/{distr_id}/{store_id}/{so_type}
 **Verb:** POST
+
 **Purpose:** deletes a salesorder
+
 **DB Mapping:** on cloud coordinator editvou per store available
+
 **URI Parameter:** doc_id, distr_id, store_id, so_type
+
+**Notes:**
+- editvou-bulk uses the same URI parameters
+- editvou-bulk gets used to delete both normal and bulk sales order
+- works only on production environment
+- old editvou will be depricated after force version
+
 **Output:**
 
 | Status Code | Message/Body                  |
@@ -579,7 +590,7 @@ Status Code: 201 - Created
 **NOTE:** ~~Userinvoices is updated on both production and development to display CUST_ID.~~ 
 
 - api/userinvoices does not work on development, only on production. It will be depricated upon forcing new app version
-- api/userinvoices-v2 works on development only (will be moved to production)
+- api/userinvoices-v2 works on both dev and production
 
 **URI Parameter:** a string for distrid (ex: 00000001)
 **Output userinvoices:** 
