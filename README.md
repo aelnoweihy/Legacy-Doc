@@ -526,11 +526,22 @@ Status Code: 201 - Created
 **DB Mapping:**
 **URI Parameter:**
 **Output:**
+
 ## userpending/{userID}
-**Verb:**
-**Purpose:**
-**DB Mapping:**
-**URI Parameter:**
+### userpending-bulk/{userID}
+**Verb:**  GET
+
+**Purpose:** Gets pending salesorders
+
+**DB Mapping:** userpending and userpending_bulk
+
+**URI Parameter:** userId which is disterId
+
+**NOTE:** 
+- api/userpending will be depricated with future release
+- api/userpending-bulk is the one that's intended for new version
+- both methods share the same output
+
 **Output:**
 ```
 [
