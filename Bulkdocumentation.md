@@ -313,6 +313,7 @@
 - 404 Not Found
 
 **Note:** 
+- Still needs replication work. Ednpoint specs will be kept
 
 **Sample Output** 
 "DELETED"
