@@ -1,16 +1,17 @@
 # Bulk-Related Doc
 
 **Prod URL:**  http://mywayegypt-api.azurewebsites.net/
+
 **Dev URL:**  http://mywayegypt-api-devenv.azurewebsites.net/
 
 ## Endpoints
 | Verb | Endpoint | Production | Dev |
 |------|----------|------------|-----|
-| GET  | [userinvoices](#apiuserinvoicesuseridapi/userinvoices/{userId}) | Y | N |
-| GET  | api/userinvoices-v2/{userId} | Y | Y |
-| GET  | api/userpending/{userId} | Y | Y |
-| GET  | api/userpending-bulk/{userId} | Y | N |
-| POST | api/editvou-bulk/{doc_id}/{distr_id}/{store_id}/{so_type} | Y | N |
+| GET  | [api/userinvoices/{userId}](#apiuserinvoicesuserid) | Y | N |
+| GET  | [api/userinvoices-v2/{userId}](#apiuserinvoices-v2userid) | Y | Y |
+| GET  | [api/userpending/{userId}](#apiuserpendinguserid) | Y | Y |
+| GET  | [api/userpending-bulk/{userId}](#apiuserpending-bulkuserid) | Y | N |
+| POST | [api/editvou-bulk/{doc_id}/{distr_id}/{store_id}/{so_type}](#apieditvou-bulkdoc_iddistr_idstore_idso_type) | Y | N |
 
 ## api/userinvoices/{userId}
 
