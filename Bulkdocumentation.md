@@ -10,7 +10,7 @@
 | GET  | [api/userinvoices/{userId}](#apiuserinvoicesuserid) | Y | N |
 | GET  | [api/userinvoices-v2/{userId}](#apiuserinvoices-v2userid) | Y | Y |
 | GET  | [api/userpending/{userId}](#apiuserpendinguserid) | Y | Y |
-| GET  | [api/userpending-bulk/{userId}](#apiuserpending-bulkuserid) | Y | N |
+| GET  | [api/userpending-bulk/{userId}](#apiuserpending-bulkuserid) | Y | Y |
 | POST | [api/editvou-bulk/{doc_id}/{distr_id}/{store_id}/{so_type}](#apieditvou-bulkdoc_iddistr_idstore_idso_type) | Y | N |
 
 ## api/userinvoices/{userId}
