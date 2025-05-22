@@ -339,7 +339,7 @@
 	- apmaster.DISTR_ID = a9master.CUS_VEN_ID
  	- apmaster.USER_ID = a9master.USER_ID
 - If we want to add a new membership during a bulk operation, here's the API flow:
-	- Use 
+	- Use [this flow](#flow-of-members-within-bulk)
 
 
 **Request Body:** 
