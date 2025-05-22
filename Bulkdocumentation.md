@@ -12,6 +12,8 @@
 | GET  | [api/userpending/{userId}](#apiuserpendinguserid) | Y | Y |
 | GET  | [api/userpending-bulk/{userId}](#apiuserpending-bulkuserid) | Y | Y |
 | POST | [api/editvou-bulk/{doc_id}/{distr_id}/{store_id}/{so_type}](#apieditvou-bulkdoc_iddistr_idstore_idso_type) | Y | N |
+| PUT  | [api/soBulk](#apisobulk) | Y | Y |
+| PUT  | [api/memregister_no_so/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}](#apimemregister_no_soleaderidds_shipment_placeareaid_8kspnameinv_typestore_id) | Y | Y |
 
 ## api/userinvoices/{userId}
 
@@ -317,3 +319,200 @@
 
 **Sample Output** 
 "DELETED"
+
+
+## api/soBulk
+
+**Verb:** PUT
+
+**Purpose:** Creates a bulk salesorder
+
+**DB Mapping:** AP, AQ, DSAP3, A9, AA
+
+**URI Parameter:** N/A
+
+**NOTES:**
+- a9master.USER_ID: it's always the currently logged in user.
+- a9master.CUS_VEN_ID: it's always the distr who the user makes the salesorder for
+- apmaster.CUST_ID: it's the user who's gonna receive the shipment
+- While populating the API, here's the mapping of values:
+	- apmaster.DISTR_ID = a9master.CUS_VEN_ID
+ 	- apmaster.USER_ID = a9master.USER_ID
+- If we want to add a new membership during a bulk operation, here's the API flow:
+	- Use 
+
+
+**Request Body:** 
+```
+{
+    "batch": [
+        {
+            "a9master": {
+                "STORE_ID": "01",
+                "BRANCH_ID": "10",
+                "CUS_VEN_ID": "00000001",
+                "USER_ID": "003"
+            },
+            "apmaster": {
+                "STORE_ID": "01",
+                "SO_INV_TYPE": "CR",
+                "GROSS_TOTAL": 23100,
+                "NET_TOTAL": 23100,
+                "PRJ_ID": "AAAA",
+                "DS_SHIPMENT_COMP": "00000001",
+                "DS_SHIPMENT_PLACE": "01",
+                "AREMARKS": "Test salesorder",
+                "SHIPMTHD_A": "{for bonus}",
+                "SHIPMTHD_L": "{for backorder}",
+		"CUST_ID" : "00000001"
+            },
+            "aadetail": [
+                {
+                    "ITEM_ID": "4227",
+                    "QTY": 1,
+                    "DS_SHIPMENT_COMP": "00000001",
+                    "DS_SHIPMENT_PLACE": "01"
+                }
+            ],
+            "aqdetail": [
+                {
+                    "ITEM_ID": "4227",
+                    "QTY_REQ": 1,
+                    "UNIT_PRICE": 23100,
+                    "NET_PRICE": 23100,
+                    "TOT_PRICE": 23100,
+                    "ITEM_BP": 8,
+                    "ITEM_BV": 19200
+                },
+                {
+                    "ITEM_ID": "90",
+                    "QTY_REQ": 1,
+                    "UNIT_PRICE": 23100,
+                    "NET_PRICE": 23100,
+                    "TOT_PRICE": 23100,
+                    "ITEM_BP": 8,
+                    "ITEM_BV": 19200
+                }
+            ],
+            "backorder": [
+                {
+                    "DOC_ID": "100011005285",
+                    "ITEM_ID": "9186",
+                    "FINALQTY": 1,
+                    "GIFT_TYPE": "0"
+                }
+            ],
+            "ap3": [
+	        {
+	            "DISTR_ID": "10191974",
+	
+	            "S_SERIAL" : "BONUS VALUE IN STRING"
+	        },
+	        {
+	            "DISTR_ID": "10000124",
+	
+	            "S_SERIAL" : "BONUS VALUE IN STRING"
+	
+	        }
+	    ]
+        }
+    ],
+    "storeId":"01"
+}
+```
+**Output:**
+
+| Code | Message                                                                   |
+| ---- | ------------------------------------------------------------------------- |
+| 201  | Returns a list of sales order DOC_ID<br>[<br>    "9900031039365"<br>]<br> |
+| 500  | An error occured while processing the transaction.                        |
+
+## api/memregister_no_so/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}
+
+**Verb:** PUT
+
+**Purpose:** Creates a new membership without sales order
+
+**DB Mapping:** AZ1, DISTR_SHIPPL
+
+**URI Parameter:** same parameters as the normal memregister-v2 API.
+
+**Sample Call:**
+- **URI**: api/memregister_no_so/00000001/100052/36/الخانكه/CR/01
+- **Request Body:**
+```
+{
+	"SERVICE_CENTER":"11",
+	"SPONSOR_ID" : "00000001",
+	"FAMILY_ANAME":"النويهى",
+	"ANAME":"02عبدالرحمن أيمن",
+	"DISTR_IDENT":"123qwe102",
+	"BIRTH_DATE": "1994-07-18",
+	"E_MAIL":"abdelrahmanayman48@gmail.com",
+	"TELEPHONE":"01141120200",
+	"ADDRESS":"123 test",
+    "AREA_ID": "01"
+}
+```
+
+**Output:** 
+```
+{
+    "id": "99479139"
+}
+```
+
+# Flow of members within bulk:
+- First we call [api/memregister_no_no](#apimemregister_no_soleaderidds_shipment_placeareaid_8kspnameinv_typestore_id).
+- We store the return as an array to be fed into [api/soBulk](#apisobulk) as the following sample
+```
+{
+    "batch": [
+        {
+            "a9master": {
+                "STORE_ID": "01",
+                "BRANCH_ID": "10",
+                "CUS_VEN_ID": "distrId output from memregister_no_so",
+                "USER_ID": "current logged in user"
+            },
+            "apmaster": {
+                "STORE_ID": "01",
+                "SO_INV_TYPE": "CR",
+                "GROSS_TOTAL": 20,
+                "NET_TOTAL": 20,
+                "PRJ_ID": "AAAA",
+                "DS_SHIPMENT_COMP": "100001",
+                "DS_SHIPMENT_PLACE": "100052",
+                "AREMARKS": "New Membership",
+                "SHIPMTHD_A": "",
+                "SHIPMTHD_L": "",
+		        "CUST_ID" : "proper cust_id"
+            },
+            "aadetail": [
+                {
+                    "ITEM_ID": "99m",
+                    "QTY": 1,
+                    "DS_SHIPMENT_COMP": "00000001",
+                    "DS_SHIPMENT_PLACE": "01"
+                }
+            ],
+            "aqdetail": [
+                {
+                    "ITEM_ID": "99m",
+                    "QTY_REQ": 1,
+                    "UNIT_PRICE": 20,
+                    "NET_PRICE": 20,
+                    "TOT_PRICE": 20,
+                    "ITEM_BP": 0,
+                    "ITEM_BV": 0
+                }
+            ],
+            "backorder": [],
+            "ap3": []
+        },
+--next sales order in bulk 
+    ],
+    "storeId":"01"
+}
+```
+- To get the proper value of the 99m, call API: https://mmaas.codev.solutions/api/items/99 or http://159.65.87.196:5000/api/items/99  
