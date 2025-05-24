@@ -13,7 +13,8 @@
 | GET  | [api/userpending-bulk/{userId}](#apiuserpending-bulkuserid) | Y | Y |
 | POST | [api/editvou-bulk/{doc_id}/{distr_id}/{store_id}/{so_type}](#apieditvou-bulkdoc_iddistr_idstore_idso_type) | Y | N |
 | PUT  | [api/soBulk](#apisobulk) | Y | Y |
-| PUT  | [api/memregister_no_so/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}](#apimemregister_no_soleaderidds_shipment_placeareaid_8kspnameinv_typestore_id) | Y | Y |
+<!-- | PUT  | [api/memregister_no_so/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}](#apimemregister_no_soleaderidds_shipment_placeareaid_8kspnameinv_typestore_id) | Y | Y | -->
+| PUT | [api/memregister-bulk-no-so](#memregister-bulk-no-so) | Y | Y
 
 ## api/userinvoices/{userId}
 
@@ -338,86 +339,90 @@
 - While populating the API, here's the mapping of values:
 	- apmaster.DISTR_ID = a9master.CUS_VEN_ID
  	- apmaster.USER_ID = a9master.USER_ID
-- If we want to add a new membership during a bulk operation, here's the API flow:
-	- Use [this flow](#flow-of-members-within-bulk)
+- The body of bulkMembers is the output of the api [api/api/memregister-bulk-no-so](#apimemregister-bulk-no-so)
 
 
 **Request Body:** 
 ```
 {
-    "batch": [
-        {
-            "a9master": {
-                "STORE_ID": "01",
-                "BRANCH_ID": "10",
-                "CUS_VEN_ID": "00000001",
-                "USER_ID": "003"
-            },
-            "apmaster": {
-                "STORE_ID": "01",
-                "SO_INV_TYPE": "CR",
-                "GROSS_TOTAL": 23100,
-                "NET_TOTAL": 23100,
-                "PRJ_ID": "AAAA",
-                "DS_SHIPMENT_COMP": "00000001",
-                "DS_SHIPMENT_PLACE": "01",
-                "AREMARKS": "Test salesorder",
-                "SHIPMTHD_A": "{for bonus}",
-                "SHIPMTHD_L": "{for backorder}",
-		"CUST_ID" : "00000001"
-            },
-            "aadetail": [
-                {
-                    "ITEM_ID": "4227",
-                    "QTY": 1,
-                    "DS_SHIPMENT_COMP": "00000001",
-                    "DS_SHIPMENT_PLACE": "01"
-                }
-            ],
-            "aqdetail": [
-                {
-                    "ITEM_ID": "4227",
-                    "QTY_REQ": 1,
-                    "UNIT_PRICE": 23100,
-                    "NET_PRICE": 23100,
-                    "TOT_PRICE": 23100,
-                    "ITEM_BP": 8,
-                    "ITEM_BV": 19200
-                },
-                {
-                    "ITEM_ID": "90",
-                    "QTY_REQ": 1,
-                    "UNIT_PRICE": 23100,
-                    "NET_PRICE": 23100,
-                    "TOT_PRICE": 23100,
-                    "ITEM_BP": 8,
-                    "ITEM_BV": 19200
-                }
-            ],
-            "backorder": [
-                {
-                    "DOC_ID": "100011005285",
-                    "ITEM_ID": "9186",
-                    "FINALQTY": 1,
-                    "GIFT_TYPE": "0"
-                }
-            ],
-            "ap3": [
-	        {
-	            "DISTR_ID": "10191974",
-	
-	            "S_SERIAL" : "BONUS VALUE IN STRING"
-	        },
-	        {
-	            "DISTR_ID": "10000124",
-	
-	            "S_SERIAL" : "BONUS VALUE IN STRING"
-	
-	        }
-	    ]
-        }
-    ],
-    "storeId":"01"
+	"batch": [
+		{
+			"a9master": {
+				"STORE_ID": "01",
+				"BRANCH_ID": "10",
+				"CUS_VEN_ID": "00000141",
+				"USER_ID": "00000001"
+			},
+			"apmaster": {
+				"STORE_ID": "01",
+				"SO_INV_TYPE": "CR",
+				"GROSS_TOTAL": 115.20,
+				"NET_TOTAL": 115.20,
+				"PRJ_ID": "AAAA",
+				"DS_SHIPMENT_COMP": "100001",
+				"DS_SHIPMENT_PLACE": "100011",
+				"AREMARKS": "Test salesorder",
+				"SHIPMTHD_A": "{for bonus}",
+				"SHIPMTHD_L": "{for backorder}",
+				"CUST_ID": "00000001"
+			},
+			"aadetail": [
+				{
+					"ITEM_ID": "1260",
+					"QTY": 1,
+					"DS_SHIPMENT_COMP": "00000001",
+					"DS_SHIPMENT_PLACE": "01"
+				},
+				{
+					"ITEM_ID": "90",
+					"QTY": 1,
+					"DS_SHIPMENT_COMP": "00000001",
+					"DS_SHIPMENT_PLACE": "01"
+				}
+			],
+			"aqdetail": [
+				{
+					"ITEM_ID": "1260",
+					"QTY_REQ": 1.000,
+					"UNIT_PRICE": 91.500,
+					"NET_PRICE": 91.500,
+					"TOT_PRICE": 91.500,
+					"ITEM_BP": 23,
+					"ITEM_BV": 68.63
+				},
+				{
+					"ITEM_ID": "90",
+					"QTY_REQ": 1,
+					"UNIT_PRICE": 23.700,
+					"NET_PRICE": 23.700,
+					"TOT_PRICE": 23.700,
+					"ITEM_BP": 0,
+					"ITEM_BV": 0
+				}
+			],
+			"backorder": [
+				
+			],
+			"ap3": [
+				
+			]
+		}
+	],
+	"bulkMembers": [
+		{
+			"distrId": "99479172",
+			"dsShipmentPlace": "100052",
+			"userId": "00000001",
+			"sponsorId": "00000001"
+		},
+		{
+			"distrId": "99479173",
+			"dsShipmentPlace": "100052",
+			"userId": "00000001",
+			"sponsorId": "00000001"
+		}
+	],
+	"storeId": "01"
 }
 ```
 **Output:**
@@ -427,7 +432,86 @@
 | 201  | Returns a list of sales order DOC_ID<br>[<br>    "9900031039365"<br>]<br> |
 | 500  | An error occured while processing the transaction.                        |
 
-## api/memregister_no_so/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}
+## api/memregister-bulk-no-so
+
+**Verb:** PUT
+
+**Purpose:** Creates bulk members without salesorders
+
+**DB Mapping:** ACC011AZ1
+
+**Input Body Sample:**
+```
+[
+    {
+        "dsShipmentPlace" : "100052",
+        "soInvType" : "CR",
+        "spname" : "الخانكه",
+        "storeId" : "01",
+        "serviceCenter" : "11",
+        "sponsorId" : "00000001",
+        "familyName" : "last name o2",
+        "aname" : "Name o1",
+        "distrIdent" : "123xoxo1",
+        "birthDate" : "1994-07-18",
+        "email" : "asf@cdv.com",
+        "telephone" : "a1147129158",
+        "address" : "asdfg address",
+        "areaId" : "32"
+    },
+    {
+        "dsShipmentPlace" : "100052",
+        "soInvType" : "CR",
+        "spname" : "الخانكه",
+        "storeId" : "01",
+        "serviceCenter" : "11",
+        "sponsorId" : "00000001",
+        "familyName" : "last name o2",
+        "aname" : "Name o2",
+        "distrIdent" : "123xox0",
+        "birthDate" : "1994-07-18",
+        "email" : "asf@cdv.com",
+        "telephone" : "11147129158",
+        "address" : "asdfg address",
+        "areaId" : "32"
+    }
+]
+```
+
+**Output:**
+- Status code : 201 - created
+```
+[
+    {
+        "distrId": "99479172",
+        "dsShipmentPlace": "100052",
+        "userId": "00000001",
+        "sponsorId": "00000001"
+    },
+    {
+        "distrId": "99479173",
+        "dsShipmentPlace": "100052",
+        "userId": "00000001",
+        "sponsorId": "00000001"
+    }
+]
+```
+
+**Error Messages**: 
+- Status code : 409 - conflict
+```
+{
+    "errMsg": "رقم التيلفون b1147129158 مكرر"
+}
+or
+{
+    "errMsg": "الرقم القومي b1147129158 مكرر"
+}
+```
+
+
+
+<!-- ## api/memregister_no_so/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}
 
 **Verb:** PUT
 
@@ -515,4 +599,4 @@
     "storeId":"01"
 }
 ```
-- To get the proper value of the 99m, call API: https://mmaas.codev.solutions/api/items/99 or http://159.65.87.196:5000/api/items/99  
+- To get the proper value of the 99m, call API: https://mmaas.codev.solutions/api/items/99 or http://159.65.87.196:5000/api/items/99   -->
