@@ -13,8 +13,8 @@
 | GET  | [api/userpending-bulk/{userId}](#apiuserpending-bulkuserid) | Y | Y |
 | POST | [api/editvou-bulk/{doc_id}/{distr_id}/{store_id}/{so_type}](#apieditvou-bulkdoc_iddistr_idstore_idso_type) | Y | N |
 | PUT  | [api/soBulk](#apisobulk) | Y | Y |
+| PUT  | [api/memregister-bulk-no-so](#memregister-bulk-no-so) | Y | Y
 <!-- | PUT  | [api/memregister_no_so/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}](#apimemregister_no_soleaderidds_shipment_placeareaid_8kspnameinv_typestore_id) | Y | Y | -->
-| PUT | [api/memregister-bulk-no-so](#memregister-bulk-no-so) | Y | Y
 
 ## api/userinvoices/{userId}
 
