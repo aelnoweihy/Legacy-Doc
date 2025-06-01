@@ -500,13 +500,26 @@
 **Error Messages**: 
 - Status code : 409 - conflict
 ```
-{
-    "errMsg": "رقم التيلفون b1147129158 مكرر"
-}
-or
-{
-    "errMsg": "الرقم القومي b1147129158 مكرر"
-}
+[
+    {
+        "ErrorMessage": "الرقم القومي مكرر",
+        "DupelicateValues": [
+            "b123xoxo1",
+            "c123xox0",
+            "d123xox0",
+            "e123xox0"
+        ]
+    },
+    {
+        "ErrorMessage": "رقم التيلفون مكرر",
+        "DupelicateValues": [
+            "b1147129158",
+            "c11147129158",
+            "d11147129158",
+            "e11147129158"
+        ]
+    }
+]
 ```
 
 
