@@ -429,7 +429,7 @@
 
 | Code | Message                                                                   |
 | ---- | ------------------------------------------------------------------------- |
-| 201  | Returns a list of sales order DOC_ID<br>[<br>    "9900031039365"<br>]<br> |
+| 201  | Returns a list of sales order DOC_ID<br>[<br>    "9900031039365"<br>]<br> |
 | 500  | An error occured while processing the transaction.                        |
 
 ## api/memregister-bulk-no-so
@@ -521,7 +521,13 @@
     }
 ]
 ```
-
+### **Validation Flow:**
+- First code checks if there's a duplicate distr_ident on the database and we store it in S1
+- Then code checks if there're sales orders in the past 31 days for that specific distr by sproc **CheckRecentDataForDISTRID**
+- If there's data and starts with 99, we store it in S2.
+- else we add duplicate from S1 to S3
+- If theres data in S3, we print it and terminate process.
+- Otherwise we continue and either create new AZ1 records or return the list from S2.
 
 
 <!-- ## api/memregister_no_so/{leaderId}/{ds_shipment_place}/{areaId_8k}/{spname}/{inv_type}/{store_id}
@@ -564,52 +570,52 @@
 - We store the return as an array to be fed into [api/soBulk](#apisobulk) as the following sample
 ```
 {
-    "batch": [
-        {
-            "a9master": {
-                "STORE_ID": "01",
-                "BRANCH_ID": "10",
-                "CUS_VEN_ID": "distrId output from memregister_no_so",
-                "USER_ID": "current logged in user"
-            },
-            "apmaster": {
-                "STORE_ID": "01",
-                "SO_INV_TYPE": "CR",
-                "GROSS_TOTAL": 20,
-                "NET_TOTAL": 20,
-                "PRJ_ID": "AAAA",
-                "DS_SHIPMENT_COMP": "100001",
-                "DS_SHIPMENT_PLACE": "100052",
-                "AREMARKS": "New Membership",
-                "SHIPMTHD_A": "",
-                "SHIPMTHD_L": "",
+    "batch": [
+        {
+            "a9master": {
+                "STORE_ID": "01",
+                "BRANCH_ID": "10",
+                "CUS_VEN_ID": "distrId output from memregister_no_so",
+                "USER_ID": "current logged in user"
+            },
+            "apmaster": {
+                "STORE_ID": "01",
+                "SO_INV_TYPE": "CR",
+                "GROSS_TOTAL": 20,
+                "NET_TOTAL": 20,
+                "PRJ_ID": "AAAA",
+                "DS_SHIPMENT_COMP": "100001",
+                "DS_SHIPMENT_PLACE": "100052",
+                "AREMARKS": "New Membership",
+                "SHIPMTHD_A": "",
+                "SHIPMTHD_L": "",
 		        "CUST_ID" : "proper cust_id"
-            },
-            "aadetail": [
-                {
-                    "ITEM_ID": "99m",
-                    "QTY": 1,
-                    "DS_SHIPMENT_COMP": "00000001",
-                    "DS_SHIPMENT_PLACE": "01"
-                }
-            ],
-            "aqdetail": [
-                {
-                    "ITEM_ID": "99m",
-                    "QTY_REQ": 1,
-                    "UNIT_PRICE": 20,
-                    "NET_PRICE": 20,
-                    "TOT_PRICE": 20,
-                    "ITEM_BP": 0,
-                    "ITEM_BV": 0
-                }
-            ],
-            "backorder": [],
-            "ap3": []
-        },
+            },
+            "aadetail": [
+                {
+                    "ITEM_ID": "99m",
+                    "QTY": 1,
+                    "DS_SHIPMENT_COMP": "00000001",
+                    "DS_SHIPMENT_PLACE": "01"
+                }
+            ],
+            "aqdetail": [
+                {
+                    "ITEM_ID": "99m",
+                    "QTY_REQ": 1,
+                    "UNIT_PRICE": 20,
+                    "NET_PRICE": 20,
+                    "TOT_PRICE": 20,
+                    "ITEM_BP": 0,
+                    "ITEM_BV": 0
+                }
+            ],
+            "backorder": [],
+            "ap3": []
+        },
 --next sales order in bulk 
-    ],
-    "storeId":"01"
+    ],
+    "storeId":"01"
 }
 ```
 - To get the proper value of the 99m, call API: https://mmaas.codev.solutions/api/items/99 or http://159.65.87.196:5000/api/items/99   -->
