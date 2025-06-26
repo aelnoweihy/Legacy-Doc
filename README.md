@@ -1,8 +1,8 @@
 # Preface
 This document serves to document all APIs running for the production environment and dev environment.
 # Domains
-- **Production URL:** http://mywayegypt-api.azurewebsites.net/api/{endpoint}
-- **Dev URL:** http://mywayegypt-api-devenv.azurewebsites.net/api/{endpoint}
+- **Production URL:** 
+- **Dev URL:** 
 # Databases Used
 - **Production:**
 	- Egy_Azure
