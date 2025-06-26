@@ -1,8 +1,8 @@
 # Bulk-Related Doc
 
-**Prod URL:**  http://mywayegypt-api.azurewebsites.net/
+**Prod URL:**
 
-**Dev URL:**  http://mywayegypt-api-devenv.azurewebsites.net/
+**Dev URL:** 
 
 ## Endpoints
 | Verb | Endpoint | Production | Dev |
