@@ -3,6 +3,7 @@
 |------|----------|------------|-----|
 | GET | [api/distr-inactive-users/{distrId}](#apidistr-inactive-usersdistrid) | Y | Y |
 | GET | [api/userpending-bulk-v2/{userID}](#apiuserpending-bulk-v2userid) | Y | Y |
+| GET | [api/distr-active-users/{distrId}](#apidistr-inactive-users-distrid) | Y | Y |
 
 
 ### api/distr-inactive-users/{distrId}
@@ -109,4 +110,45 @@
         "CUST_ID": "99479700"
     }
 ]
+```
+### api/distr-active-users/{distrId}
+**Purpose:** Gets all active users for the currently logged in user tree
+
+**DB Mapping:** [Egy_ReportDb/MYPHONE_TEST].[dbo].[DISTR_ACTIVE_USERS]
+
+**URI Parameter:** userId = distrId of the current logged in user
+
+**Status Codes:** 
+
+- 200 Ok
+- 404 Not Found
+
+
+**Sample Output** 
+```
+[
+    {
+        "distr_id": "10409502",
+        "distr_name": "مجدى عباس حامد",
+        "M_RATIO": 0.0000,
+        "COUNT21": 0,
+        "per_bp": 10.0000,
+        "PGROUP_BP": 10.0000,
+        "TOTAL_BP": 10.0000,
+        "area_name": "الزيتون",
+        "TELEPHONE": "01012100546"
+    },
+    {
+        "distr_id": "73005720",
+        "distr_name": "محمود مصطفي عبدالمنعم عبدلله",
+        "M_RATIO": 0.0000,
+        "COUNT21": 0,
+        "per_bp": 10.0000,
+        "PGROUP_BP": 10.0000,
+        "TOTAL_BP": 10.0000,
+        "area_name": "أسيوط",
+        "TELEPHONE": "01090310729"
+    }
+]
+
 ```
