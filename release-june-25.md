@@ -3,7 +3,7 @@
 |------|----------|------------|-----|
 | GET | [api/distr-inactive-users/{distrId}](#apidistr-inactive-usersdistrid) | Y | Y |
 | GET | [api/userpending-bulk-v2/{userID}](#apiuserpending-bulk-v2userid) | Y | Y |
-| GET | [api/distr-active-users/{distrId}](#apidistr-inactive-users-distrid) | Y | Y |
+| GET | [api/distr-active-users/{distrId}](#apidistr-active-usersdistrid) | Y | Y |
 
 
 ### api/distr-inactive-users/{distrId}
