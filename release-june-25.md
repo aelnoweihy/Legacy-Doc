@@ -23,26 +23,20 @@
 ```
 [
     {
-        "distr_id": "10409502",
-        "distr_name": "مجدى عباس حامد",
-        "M_RATIO": 6.0000,
-        "COUNT21": 0,
-        "per_bp": 904.0000,
-        "PGROUP_BP": 904.0000,
-        "TOTAL_BP": 904.0000,
-        "area_name": "الزيتون",
-        "TELEPHONE": "01012100546"
+        "distr_id": "52063675",
+        "distr_name": "افراج حموده حموده يوسف السمار",
+        "M_RATIO": 12.0000,
+        "area_name": "الاسكندرية",
+        "TELEPHONE": "01210449721",
+        "LAST_INV_DATE": "2025-05-31"
     },
     {
-        "distr_id": "73005720",
-        "distr_name": "محمود مصطفي عبدالمنعم عبدلله",
-        "M_RATIO": 12.0000,
-        "COUNT21": 0,
-        "per_bp": 2661.0000,
-        "PGROUP_BP": 3962.0000,
-        "TOTAL_BP": 3962.0000,
-        "area_name": "أسيوط",
-        "TELEPHONE": "01090310729"
+        "distr_id": "05067970",
+        "distr_name": "ايمان محمد أحمد منصور",
+        "M_RATIO": 3.0000,
+        "area_name": "دمياط",
+        "TELEPHONE": "01067862757",
+        "LAST_INV_DATE": "2025-05-26"
     }
 ]
 
@@ -128,26 +122,18 @@
 ```
 [
     {
-        "distr_id": "10409502",
-        "distr_name": "مجدى عباس حامد",
-        "M_RATIO": 0.0000,
-        "COUNT21": 0,
-        "per_bp": 10.0000,
-        "PGROUP_BP": 10.0000,
-        "TOTAL_BP": 10.0000,
-        "area_name": "الزيتون",
-        "TELEPHONE": "01012100546"
+        "distr_id": "03070536",
+        "distr_name": "توفيق عبدالحميد سعد القلينى",
+        "TOTAL_BP": 30.0000,
+        "area_name": "بورسعيد",
+        "TELEPHONE": "01223881399"
     },
     {
-        "distr_id": "73005720",
-        "distr_name": "محمود مصطفي عبدالمنعم عبدلله",
-        "M_RATIO": 0.0000,
-        "COUNT21": 0,
-        "per_bp": 10.0000,
-        "PGROUP_BP": 10.0000,
-        "TOTAL_BP": 10.0000,
-        "area_name": "أسيوط",
-        "TELEPHONE": "01090310729"
+        "distr_id": "05073821",
+        "distr_name": "محمد عبداللطيف محمد عبداللطيف الشربينى",
+        "TOTAL_BP": 27.0000,
+        "area_name": "دمياط",
+        "TELEPHONE": "01012212284"
     }
 ]
 
